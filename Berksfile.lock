@@ -1,0 +1,21 @@
+DEPENDENCIES
+  alternate_ruby
+    path: .
+  alternate_ruby_test
+    path: test/cookbooks/alternate_ruby_test
+  apt
+  build-essential
+  minitest-handler (= 1.1.4)
+  yum
+
+GRAPH
+  alternate_ruby (0.1.0)
+    apt (>= 0.0.0)
+  alternate_ruby_test (0.1.0)
+    alternate_ruby (>= 0.0.0)
+  apt (2.5.3)
+  build-essential (2.0.6)
+  chef_handler (1.1.6)
+  minitest-handler (1.1.4)
+    chef_handler (>= 0.0.0)
+  yum (3.2.4)
