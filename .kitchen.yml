@@ -4,6 +4,12 @@ driver_config:
   require_chef_omnibus: true
 
 platforms:
+- name: ubuntu-14.04
+  driver_config:
+    box: opscode-ubuntu-14.04
+    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-14.04_chef-provisionerless.box
+  run_list:
+  - recipe[apt]
 - name: ubuntu-12.04
   driver_config:
     box: opscode-ubuntu-12.04
@@ -35,9 +41,22 @@ suites:
     "alternate_ruby": {
     }
   }
+- name: brightbox_ruby_ng
+  excludes:
+  - ubuntu-10.04
+  run_list:
+  - recipe[build-essential]
+  - recipe[minitest-handler]
+  - recipe[alternate_ruby_test::brightbox_ruby_ng]
+  attributes: {
+    "alternate_ruby": {
+      "brightbox_package": "ruby2.1"
+    }
+  }
 - name: unboxed
   excludes:
   - ubuntu-12.04
+  - ubuntu-14.04
   run_list:
   - recipe[build-essential]
   - recipe[minitest-handler]
