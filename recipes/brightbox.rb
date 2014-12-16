@@ -27,4 +27,8 @@ end
 
 package node['alternate_ruby']['brightbox_package']
 
+if node['alternate_ruby']['brightbox_package'] >= 'ruby2'
+  package "#{node['alternate_ruby']['brightbox_package']}-dev"
+end
+
 node.override['alternate_ruby']['gem_bin_dir'] = '/usr/local/bin'
