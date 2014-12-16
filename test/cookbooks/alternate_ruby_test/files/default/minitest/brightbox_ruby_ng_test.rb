@@ -12,5 +12,9 @@ describe "alternate_ruby" do
     it "should have the ruby2.1 package installed" do
       package("ruby2.1").must_be_installed
     end
+
+    it "should have the ruby2.1-dev package installed" do
+      package("ruby2.1-dev").must_be_installed
+    end
   end
 end
