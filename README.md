@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/hortoncd/cookbook-alternate-ruby.svg?style=svg)](https://circleci.com/gh/hortoncd/cookbook-alternate-ruby)
+
 Description
 ===========
 
