@@ -2,7 +2,7 @@
 # Cookbook Name:: alternate_ruby
 # Attributes:: default
 #
-# Copyright 2013 - 2014, Chris Horton
+# Copyright 2013 - 2016, Chris Horton
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,8 +25,3 @@ default['alternate_ruby']['brightbox_key']        = 'C3173AA6'
 default['alternate_ruby']['brightbox_keyserver']  = 'keyserver.ubuntu.com'
 default['alternate_ruby']['brightbox_components'] = ['main']
 default['alternate_ruby']['brightbox_package']    = 'ruby1.9.3'
-
-default['alternate_ruby']['unboxed_repo'] = 'http://apt.unboxedconsulting.com/'
-default['alternate_ruby']['unboxed_key']        = 'http://apt.unboxedconsulting.com/release.asc'
-default['alternate_ruby']['unboxed_components'] = ['main']
-default['alternate_ruby']['unboxed_package']    = 'ubxd-ruby1.9.3'
