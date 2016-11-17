@@ -3,3 +3,6 @@
 .ruby-gemset
 .ruby-version
 .kitchen/
+
+.bundle
+vendor/
