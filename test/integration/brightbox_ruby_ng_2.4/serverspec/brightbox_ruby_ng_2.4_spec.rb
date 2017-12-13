@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: alternate_ruby
-# Recipe:: default
+# Test:: default
 #
-# Copyright 2013 - 2016, Chris Horton
+# Copyright 2013 - 2017, Chris Horton
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,13 +17,16 @@
 # limitations under the License.
 #
 
-if node['platform'] == 'ubuntu'
-  package 'python-software-properties'
-end
+require 'spec_helper'
 
-case node['alternate_ruby']['source']
-when 'brightbox'
-  include_recipe 'alternate_ruby::brightbox'
-else
-  raise "Unsupported package source: #{node['alternate_ruby']['source']}"
+describe 'alternate_ruby::default' do
+  describe file('/etc/apt/sources.list.d/brightbox.list') do
+    it { should exist }
+  end
+
+  %w{ ruby2.4 ruby2.4-dev }.each do |p|
+    describe package(p) do
+      it { should be_installed }
+    end
+  end
 end
