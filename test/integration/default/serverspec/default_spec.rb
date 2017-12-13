@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: alternate_ruby_test
-# Recipe:: default
+# Cookbook Name:: alternate_ruby
+# Test:: default
 #
-# Copyright 2013 - 2014, Chris Horton
+# Copyright 2013 - 2017, Chris Horton
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,4 +17,14 @@
 # limitations under the License.
 #
 
-include_recipe "alternate_ruby"
+require 'spec_helper'
+
+describe 'alternate_ruby::default' do
+  describe file('/etc/apt/sources.list.d/brightbox.list') do
+    it { should exist }
+  end
+
+  describe package("ruby1.9.3") do
+    it { should be_installed }
+  end
+end

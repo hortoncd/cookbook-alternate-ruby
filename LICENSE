@@ -1,29 +1,4 @@
-alternate_ruby_test Cookbook
-====================
-This cookbook is for testing the alternate_ruby cookbook.
-
-Requirements
-------------
-
-## Platform
-
-* Ubuntu (10.04+)
-
-## Cookbooks
-
-* `alternate_ruby`
-
-Attributes
-----------
-
-Usage
------
-#### alternate_ruby_test::default
-Test the install of ruby packages
-
-License and Authors
--------------------
-Authors: Chris Horton
+Copyright 2014 - 2017, Chris Horton
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

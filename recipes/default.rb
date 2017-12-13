@@ -2,7 +2,7 @@
 # Cookbook Name:: alternate_ruby
 # Recipe:: default
 #
-# Copyright 2013 - 2014, Chris Horton
+# Copyright 2013 - 2016, Chris Horton
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,8 +24,6 @@ end
 case node['alternate_ruby']['source']
 when 'brightbox'
   include_recipe 'alternate_ruby::brightbox'
-when 'unboxed'
-  include_recipe 'alternate_ruby::unboxed'
 else
   raise "Unsupported package source: #{node['alternate_ruby']['source']}"
 end

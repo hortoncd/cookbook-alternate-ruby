@@ -31,11 +31,6 @@ Attributes are under the `node[:alternate_ruby]` namespace.
 * `node['alternate_ruby']['brightbox_components']` - components to configure in apt sources.list
 * `node['alternate_ruby']['brightbox_package']` - name of the package to install
 
-* `node['alternate_ruby']['unboxed_repo']` - repo URL
-* `node['alternate_ruby']['unboxed_key']` - no key server, so URL to key file
-* `node['alternate_ruby']['unboxed_components']` - components to configure in apt sources.list
-* `node['alternate_ruby']['unboxed_package']` - package name, can be either 'ubxd-ruby1.9.2' or 'ubxd-ruby1.9.3'
-
 Recipes
 =======
 
@@ -47,10 +42,6 @@ Calls the recipe to install ruby from the chosen source.  By default the source 
 
 Installs a newer version of ruby 1.9.3 from the brightbox apt repository.  The patch level will change over time, so if you want to ensure a specific patch you will need to duplicate the repository and change the attributes to point at your mirrored repo.
 
-## unboxed
-
-Installs from the unboxed apt repository.  This is only available for ubuntu 10.04 on 64-bit machines.  Anything other will throw an exception.  The available versions are 1.9.2 and 1.9.3, controllable via  the `node['alternate_ruby']['unboxed_package']` attribute.
-
 Usage
 =====
 
@@ -60,7 +51,7 @@ License and Author
 ==================
 
 - Author:: Chris Horton (<hortoncd@gmail.com>)
-- Copyright:: 2013 - 2014, Chris Horton
+- Copyright:: 2013 - 2016, Chris Horton
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

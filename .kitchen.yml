@@ -1,68 +1,48 @@
 ---
-driver_plugin: vagrant
+driver:
+  name: docker
+  <%= "http_proxy: http://#{ENV['LOCALPROXY']}" if ENV['LOCALPROXY'] %>
+  <%= "https_proxy: http://#{ENV['LOCALPROXY']}" if ENV['LOCALPROXY'] %>
 driver_config:
   require_chef_omnibus: true
 
 platforms:
+- name: ubuntu-16.04
+  run_list:
+  - recipe[apt]
 - name: ubuntu-14.04
-  driver_config:
-    box: opscode-ubuntu-14.04
-    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-14.04_chef-provisionerless.box
   run_list:
   - recipe[apt]
-- name: ubuntu-12.04
-  driver_config:
-    box: opscode-ubuntu-12.04
-    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
-  run_list:
-  - recipe[apt]
-- name: ubuntu-10.04
-  driver_config:
-    box: opscode-ubuntu-10.04
-    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-10.04_provisionerless.box
-  run_list:
-  - recipe[apt]
-#- name: centos-6.4
-#  driver_config:
-#    box: opscode-centos-6.4
-#    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
-#- name: centos-5.9
-#  driver_config:
-#    box: opscode-centos-5.9
-#    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-5.9_provisionerless.box
 
 suites:
 - name: default
   run_list:
-  - recipe[build-essential]
-  - recipe[minitest-handler]
-  - recipe[alternate_ruby_test]
+  - recipe[alternate_ruby]
   attributes: {
     "alternate_ruby": {
     }
   }
 - name: brightbox_ruby_ng
-  excludes:
-  - ubuntu-10.04
   run_list:
-  - recipe[build-essential]
-  - recipe[minitest-handler]
-  - recipe[alternate_ruby_test::brightbox_ruby_ng]
+  - recipe[alternate_ruby]
   attributes: {
     "alternate_ruby": {
       "brightbox_package": "ruby2.1"
     }
   }
-- name: unboxed
-  excludes:
-  - ubuntu-12.04
-  - ubuntu-14.04
+- name: brightbox_ruby_ng_2.2
   run_list:
-  - recipe[build-essential]
-  - recipe[minitest-handler]
-  - recipe[alternate_ruby_test::unboxed]
+  - recipe[alternate_ruby]
   attributes: {
     "alternate_ruby": {
-      "source": "unboxed"
+      "brightbox_package": "ruby2.2"
+    }
+  }
+- name: brightbox_ruby_ng_2.4
+  run_list:
+  - recipe[alternate_ruby]
+  attributes: {
+    "alternate_ruby": {
+      "brightbox_package": "ruby2.4"
     }
   }

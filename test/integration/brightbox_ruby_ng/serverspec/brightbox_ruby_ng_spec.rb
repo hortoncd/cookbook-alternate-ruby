@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: alternate_ruby
-# Attributes:: default
+# Test:: default
 #
-# Copyright 2013 - 2016, Chris Horton
+# Copyright 2013 - 2017, Chris Horton
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,11 +17,16 @@
 # limitations under the License.
 #
 
-default['alternate_ruby']['gem_bin_dir']       = '/usr/bin'
-default['alternate_ruby']['source']            = 'brightbox'
+require 'spec_helper'
 
-default['alternate_ruby']['brightbox_repo'] = 'http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu'
-default['alternate_ruby']['brightbox_key']        = 'C3173AA6'
-default['alternate_ruby']['brightbox_keyserver']  = 'keyserver.ubuntu.com'
-default['alternate_ruby']['brightbox_components'] = ['main']
-default['alternate_ruby']['brightbox_package']    = 'ruby1.9.3'
+describe 'alternate_ruby::default' do
+  describe file('/etc/apt/sources.list.d/brightbox.list') do
+    it { should exist }
+  end
+
+  %w{ ruby2.1 ruby2.1-dev }.each do |p|
+    describe package(p) do
+      it { should be_installed }
+    end
+  end
+end
